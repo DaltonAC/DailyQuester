@@ -1,8 +1,8 @@
 var userManager = (function(){
-    this.character = {};
-    this.inventory = [];
+    const character = {};
+    const inventory = [];
     
-    this.createCharacter = function(){
+    createCharacter = function(){
         // creates character
         let character = {
             "name": "defauly",
@@ -16,7 +16,7 @@ var userManager = (function(){
         return character
     };
     
-    this.createInventory = function(){
+    createInventory = function(){
         // creates inventory
         let inventory = [
             "Dagger", "Holy water"
@@ -24,17 +24,17 @@ var userManager = (function(){
         return inventory
     };
     
-    this.levelUp = function(){
+    levelUp = function(){
         // level up the character
        character.level++       
     }
 
-    this.getLevel = function(){
+    getLevel = function(){
         console.log("Your level is: ", character.level)
     }
 
-    this.getInvetory = function(){
-        console.log("Your inventory is: ", this.inventory)
+    getInvetory = function(){
+        console.log("Your inventory is: ", inventory)
     }
     return {
         initalize:function(){
