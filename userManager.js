@@ -1,7 +1,7 @@
 var userManager = (function(){
     this.character = {};
     this.inventory = [];
-    
+
     this.createCharacter = function(){
         // creates character
         let character = {
@@ -33,22 +33,33 @@ var userManager = (function(){
         console.log("Your level is: ", character.level)
     }
 
-    this.getInvetory = function(){
-        console.log("Your inventory is: ", this.inventory)
+    this.getInventory = function(){
+        console.log(this.inventory)
+        return this.inventory
     }
+
+    this.save = function() {
+        var characterString = JSON.stringify(this.character)
+        var inventoryString = JSON.stringify(this.inventory)
+        localStorage.setItem("character", characterString)
+        localStorage.setItem("inventory", inventoryString)
+    }
+    
+    
     return {
         initalize:function(){
-            character = createCharacter()
-            inventory = createInventory()
+            character = localStorage.getItem("character") === null ? createCharacter() : JSON.parse(localStorage.getItem("character"))
+            inventory = localStorage.getItem("inventory") === null ? createInventory() : JSON.parse(localStorage.getItem("inventory"))
         }, 
         levelUp:function(){
             levelUp()
+            save()
         },
         getLevel:function(){
             getLevel()
         },
-        getInvetory:function(){
-            getInvetory()
+        getInventory:function(){
+            return getInventory()
         }
     }
 }())

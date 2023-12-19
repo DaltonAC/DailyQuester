@@ -6,14 +6,15 @@ $(function(){
         userManager.getLevel()
     })
     $("#view_inventory").click(function(){
-        userManager.getInvetory()
-    })
-
+        userManager.getInventory()
+        var inventory = userManager.getInventory()
+        var vPool="";
+        jQuery.each(inventory, function(i, val) {
+        vPool += val + "<br />";
+        })
+        $('#inventory').html(vPool);
+    });
 })
-
-const userData = {}
-localStorage.setItem(userData, userManager.initalize())
-console.log(userData)
 
 
 // fetch('./user.json')
