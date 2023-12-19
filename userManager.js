@@ -1,6 +1,6 @@
 var userManager = (function(){
-    const character = {};
-    const inventory = [];
+    let character = {};
+    let inventory = [];
     
     createCharacter = function(){
         // creates character
