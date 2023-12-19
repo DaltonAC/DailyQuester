@@ -1,10 +1,20 @@
-var userManager = (function(){
-    this.character = {};
-    this.inventory = [];
+/*
+usage:
+
+const myCharacter = createCharacter();
+myCharacter.levelUp();
+const inventory = myCharacter.getInventory();
+
+etc
+*/
+
+(function () {
+    // exports
+    window.createCharacter = createCharacter;
     
-    this.createCharacter = function(){
+    function createCharacter () {
         // creates character
-        let character = {
+        const character = {
             "name": "defauly",
             "level": 1,
             "experience": 0,
@@ -12,45 +22,34 @@ var userManager = (function(){
             "strength": 1,
             "wisdom": 1,
             "charisma": 1
-            }
-        return character
-    };
-    
-    this.createInventory = function(){
+        };
+        
         // creates inventory
-        let inventory = [
+        const inventory = [
             "Dagger", "Holy water"
         ]
-        return inventory
-    };
     
-    this.levelUp = function(){
-        // level up the character
-       character.level++       
-    }
+        function levelUp () {
+            // level up the character
+            character.level++;
+            return character.level;
+        }
 
-    this.getLevel = function(){
-        console.log("Your level is: ", character.level)
-    }
+        function getLevel () {
+            console.log("Your level is: ", character.level)
+            return character.level;
+        }
 
-    this.getInvetory = function(){
-        console.log("Your inventory is: ", this.inventory)
-    }
-    return {
-        initalize:function(){
-            character = createCharacter()
-            inventory = createInventory()
-        }, 
-        levelUp:function(){
-            levelUp()
-        },
-        getLevel:function(){
-            getLevel()
-        },
-        getInvetory:function(){
-            getInvetory()
+        function getInvetory () {
+            console.log("Your inventory is: ", inventory);
+            return inventory;
         }
     }
+
+    // character API
+    return {
+        levelUp,
+        getLevel,
+        getInvetory
+    };
 }())
-
-
