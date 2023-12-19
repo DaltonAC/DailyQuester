@@ -1,0 +1,14 @@
+{
+    "Zones": [
+        {
+            "zone_name": "Brassdale",
+            "level_range": "1-10"
+        }
+    ],
+    "Dungeons": [
+        {
+            "dungeon_name": "Lost Mine",
+            "level_range": "1-5"
+        }
+    ]
+} 
