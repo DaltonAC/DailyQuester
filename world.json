@@ -1,13 +1,21 @@
 {
-    "Zones": [
+    "zones": [
         {
             "zone_name": "Brassdale",
             "level_range": "1-10"
+        },
+        {
+            "zone_name": "Willington",
+            "level_range": "2-5"
         }
     ],
-    "Dungeons": [
+    "dungeons": [
         {
             "dungeon_name": "Lost Mine",
+            "level_range": "1-5"
+        },
+        {
+            "dungeon_name": "Tomb of Sar",
             "level_range": "1-5"
         }
     ]
