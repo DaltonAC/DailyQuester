@@ -17,11 +17,13 @@ var userManager = (function(){
     };
 
     this.getCharacter = function(){
+        // view character sheet
         console.log(this.character)
         return this.character
     }
 
     this.resetCharacter = function(){
+        // resets character + inventory to default
         this.character = createCharacter()
         this.inventory = createInventory()
         console.log("Character has been reset.")
@@ -42,21 +44,25 @@ var userManager = (function(){
     }
 
     this.getLevel = function(){
+        // view character level
         console.log("Your level is: ", character.level)
     }
 
     this.getInventory = function(){
+        // view current inventory
         console.log(this.inventory)
         return this.inventory
     }
 
     this.removeItem = function(){
+        // removes a random item from inventory
         let ran = Math.floor(Math.random() * this.inventory.length);
         let removed = this.inventory.splice(ran, 1)[0]
         console.log(removed + " was removed from inventory.")
     }
 
     this.save = function() {
+        // saves character + inventory
         var characterString = JSON.stringify(this.character)
         var inventoryString = JSON.stringify(this.inventory)
         localStorage.setItem("character", characterString)
@@ -66,7 +72,7 @@ var userManager = (function(){
     
     
     return {
-        initalize:function(){
+        initialize:function(){
             character = localStorage.getItem("character") === null ? createCharacter() : JSON.parse(localStorage.getItem("character"))
             inventory = localStorage.getItem("inventory") === null ? createInventory() : JSON.parse(localStorage.getItem("inventory"))
         }, 
@@ -78,7 +84,7 @@ var userManager = (function(){
             getLevel()
         },
         getInventory:function(){
-            return getInventory()
+            getInventory()
         },
         removeItem:function(){
             removeItem()

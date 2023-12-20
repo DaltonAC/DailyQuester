@@ -1,4 +1,6 @@
-userManager.initalize();
+questManager.initialize();
+userManager.initialize();
+
 
 $(function(){
     $("#level_up").click(function(){
@@ -36,6 +38,18 @@ $(function(){
     $("#reset_all").click(function(){
             userManager.resetCharacter()
         })
+    
+    $('#form').on('submit', function(e){
+            e.preventDefault(); // Prevent the default form submission
+        
+            var questName = $('#questName').val();
+            var questText = $('#questText').val();
+            var difficulty = $('#difficulty').val();
+        
+            questManager.createQuest(questName, questText, difficulty);
+            return false;
+        });
+        
 
 })
 
