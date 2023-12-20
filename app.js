@@ -5,6 +5,11 @@ $(function(){
         userManager.levelUp()
         userManager.getLevel()
     })
+
+    $("#view_character").click(function(){
+        userManager.getCharacter()
+    });
+
     $("#view_inventory").click(function(){
         userManager.getInventory()
         var inventory = userManager.getInventory()
@@ -14,6 +19,24 @@ $(function(){
         })
         $('#inventory').html(vPool);
     });
+
+    // this needs to only run when a page has that div tag, not on any page.
+    userManager.getInventory()
+        var inventory = userManager.getInventory()
+        var vPool="";
+        jQuery.each(inventory, function(i, val) {
+        vPool += val + "<br />";
+        })
+        $('#inventoryNow').html(vPool);
+
+    $("#remove_inventory").click(function(){
+            userManager.removeItem()
+        })
+
+    $("#reset_all").click(function(){
+            userManager.resetCharacter()
+        })
+
 })
 
 
