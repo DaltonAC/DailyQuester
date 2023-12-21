@@ -63,8 +63,8 @@ var userManager = (function(){
 
     this.save = function() {
         // saves character + inventory
-        var characterString = JSON.stringify(this.character)
-        var inventoryString = JSON.stringify(this.inventory)
+        let characterString = JSON.stringify(this.character)
+        let inventoryString = JSON.stringify(this.inventory)
         localStorage.setItem("character", characterString)
         localStorage.setItem("inventory", inventoryString)
         console.log(this.character.name + " has been saved!")
@@ -81,10 +81,10 @@ var userManager = (function(){
             save()
         },
         getLevel:function(){
-            getLevel()
+            return getLevel()
         },
         getInventory:function(){
-            getInventory()
+            return getInventory()
         },
         removeItem:function(){
             removeItem()
@@ -95,7 +95,7 @@ var userManager = (function(){
             save()
         },
         getCharacter:function(){
-            getCharacter()
+            return getCharacter()
         }
     }
 }())

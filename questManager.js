@@ -5,18 +5,26 @@ var questManager = (function(){
         // creates quest
         let quest = [questName, questText, difficulty]
         console.log(quest)
-        questList.push(quest)
+        this.questList.push(quest)
+        console.log("All Quests: " + this.questList) // have it just names of quests
         return quest
     };
 
-    this.questList = function(){
+    this.getQuests = function(){
+        // view all quests
         console.log(this.questList)
-        return this.questList
     };
 
     return {
-        initialize: function() {},
-        createQuest: createQuest, // Return the function reference
-        questList: questList // Return the questList variable
+        initialize:function(){
+            // allow saving of questList
+        }, 
+        createQuest:function(questName, questText, difficulty){
+            createQuest(questName, questText, difficulty)
+            getQuests()
+        },
+        questList:function(){
+            getQuests()
+        }
     }
 }())
