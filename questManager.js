@@ -18,6 +18,7 @@ var questManager = (function(){
     return {
         initialize:function(){
             // allow saving of questList
+            // questList = localStorage.getItem("questList") === null ? getQuests() : JSON.parse(localStorage.getItem("questList"))
         }, 
         createQuest:function(questName, questText, difficulty){
             createQuest(questName, questText, difficulty)

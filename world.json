@@ -2,11 +2,11 @@
     "zones": [
         {
             "zone_name": "Brassdale",
-            "level_range": "1-10"
+            "level_range": "1-5"
         },
         {
-            "zone_name": "Willington",
-            "level_range": "2-5"
+            "zone_name": "Willington Shores",
+            "level_range": "1-10"
         }
     ],
     "dungeons": [
