@@ -1,5 +1,6 @@
 questManager.initialize();
 userManager.initialize();
+npcManager.initialize();
 
 $(function(){
     $("#level_up").click(function(){
