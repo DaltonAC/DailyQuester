@@ -46,6 +46,7 @@ var userManager = (function(){
     this.getLevel = function(){
         // view character level
         console.log("Your level is: ", character.level)
+        return character.level
     }
 
     this.getInventory = function(){

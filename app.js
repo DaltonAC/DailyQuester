@@ -19,7 +19,6 @@ $(function(){
 
     if ($("#inventoryNow").length){
         let vPool = getInventoryString("<br />")
-        $('#inventoryNow').html(vPool);
     }
 
     $("#remove_inventory").click(function(){
@@ -38,6 +37,17 @@ $(function(){
             questManager.createQuest(questName, questText, difficulty);
             return false;
         });
+     
+    $("#getQuests").click(function(){
+            let vPool = getQuestsString("<br />")
+            $('#questList').html(vPool);
+        });
+     
+    $("#createNPC").click(function(){
+            let level = userManager.getLevel()
+            console.log("user is level: ", level)
+            npcManager.createNPC(level)
+        });
         
 })
 
@@ -51,6 +61,20 @@ function getInventoryString(delimiter) {
     });
     } else {
         vPool += "Your inventory is empty!";
+    }
+    return vPool;
+}
+
+function getQuestsString(delimiter) {
+    // get quest list as a string
+    let questList = questManager.getQuests()
+    let vPool="";
+    if (questList.length > 0) {
+        jQuery.each(questList, function(i, val) {
+        vPool += val + delimiter;
+    });
+    } else {
+        vPool += "Your quest log is empty!";
     }
     return vPool;
 }

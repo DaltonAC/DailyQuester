@@ -1,18 +1,17 @@
 var npcManager = (function(){
     this.npcList = []
 
-    this.createNPC = function(userLevel){
-        // creates quest
+    this.createNPC = function(level){
+        // creates npc
+        console.log(level)
         let npc = {
-            "name" : "",
-            "level": 0, // logic to create level based on user level
-            "health": 0, // health is based on level
-            "attack": 0, // random amount based on its level
-            "loot": [] // array of items here, have it randomly chose from a loot table for that level
+            "name" : "Enemy", // random from pool
+            "level": level, // logic to create level based on user level
+            "health": 1, // health is based on level
+            "attack": 2, // random amount based on its level
+            "loot": ["coins"] // array of items here, have it randomly chose from a loot table for that level
         }
-        // level table needed
         // loot table needed
-        // health table needed
         console.log(npc)
         this.npcList.push(npc)
         return npc
@@ -27,9 +26,8 @@ var npcManager = (function(){
         initialize:function(){
             // need saving function for npc list
         }, 
-        createNPC:function(){
-            createNPC()
-            getNPCs()
+        createNPC:function(level){
+            createNPC(level)
         },
         npcList:function(){
             getNPCs()
