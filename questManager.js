@@ -2,32 +2,34 @@ var questManager = (function(){
     this.questList = []
 
     this.createQuest = function(questName, questText, difficulty){
-        // creates quest
+        // create a quest
         let quest = [questName, questText, difficulty]
         this.questList.push(quest)
-        console.log("All Quests: " + this.questList) // have it just names of quests
+        console.log("Created quest: " + quest.questName)
         return quest
     };
 
     this.getQuests = function(){
         // view all quests
-        console.log(this.questList)
+        console.log("Current quest list: " + this.questList)
         return this.questList
     };
 
-    this.createQuestList = function(){
-        let questList = []
-        return questList
+    this.save = function() {
+        // save quest list
+        let questListString = JSON.stringify(this.questList)
+        localStorage.setItem("questList", questListString)
+        console.log(this.questList + " has been saved!")
     }
 
     return {
         initialize:function(){
-            // allow saving of questList
+            // allow saving of quest list
             questList = localStorage.getItem("questList") === null ? getQuests() : JSON.parse(localStorage.getItem("questList"))
         }, 
         createQuest:function(questName, questText, difficulty){
             createQuest(questName, questText, difficulty)
-            getQuests()
+            save()
         },
         getQuests:function(){
             return getQuests()

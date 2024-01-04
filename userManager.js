@@ -3,11 +3,12 @@ var userManager = (function(){
     this.inventory = [];
 
     this.createCharacter = function(){
-        // creates character
+        // create a character
         let character = {
             "name": "Lord Defaulty",
             "level": 1,
             "experience": 0,
+            "maxHealth": 10,
             "health": 10,
             "strength": 1,
             "wisdom": 1,
@@ -23,7 +24,7 @@ var userManager = (function(){
     }
 
     this.resetCharacter = function(){
-        // resets character + inventory to default
+        // reset character + inventory to default
         this.character = createCharacter()
         this.inventory = createInventory()
         console.log("Character has been reset.")
@@ -39,8 +40,9 @@ var userManager = (function(){
     
     this.levelUp = function(){
         // level up the character 
-        // switch statement for xp levels
        character.level++       
+       character.maxHealth += 2
+       character.health = character.maxHealth
     }
 
     this.getLevel = function(){
@@ -56,14 +58,14 @@ var userManager = (function(){
     }
 
     this.removeItem = function(){
-        // removes a random item from inventory
+        // remove a random item from inventory
         let ran = Math.floor(Math.random() * this.inventory.length);
         let removed = this.inventory.splice(ran, 1)[0]
         console.log(removed + " was removed from inventory.")
     }
 
     this.save = function() {
-        // saves character + inventory
+        // save character + inventory
         let characterString = JSON.stringify(this.character)
         let inventoryString = JSON.stringify(this.inventory)
         localStorage.setItem("character", characterString)
