@@ -45,7 +45,6 @@ $(function(){
      
     $("#createNPC").click(function(){
             let level = userManager.getLevel()
-            console.log("user is level: ", level)
             npcManager.createNPC(level)
         });
         

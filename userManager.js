@@ -40,15 +40,15 @@ var userManager = (function(){
     
     this.levelUp = function(){
         // level up the character 
-       character.level++       
-       character.maxHealth += 2
-       character.health = character.maxHealth
+       this.character.level++     
+    //    character.maxHealth += 2
+    //    character.health = character.maxHealth
     }
 
     this.getLevel = function(){
         // view character level
         console.log("Your level is: ", character.level)
-        return character.level
+        return this.character.level
     }
 
     this.getInventory = function(){
@@ -76,8 +76,8 @@ var userManager = (function(){
     
     return {
         initialize:function(){
-            character = localStorage.getItem("character") === null ? createCharacter() : JSON.parse(localStorage.getItem("character"))
-            inventory = localStorage.getItem("inventory") === null ? createInventory() : JSON.parse(localStorage.getItem("inventory"))
+            character = localStorage.getItem("character") === null ? this.createCharacter() : JSON.parse(localStorage.getItem("character"))
+            inventory = localStorage.getItem("inventory") === null ? this.createInventory() : JSON.parse(localStorage.getItem("inventory"))
         }, 
         levelUp:function(){
             levelUp()
@@ -98,6 +98,7 @@ var userManager = (function(){
             save()
         },
         getCharacter:function(){
+            save()
             return getCharacter()
         }
     }
