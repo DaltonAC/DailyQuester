@@ -7,13 +7,20 @@ var npcManager = (function(){
         "Rope", "Lockpick", "Health potion", "Wooden trinket",
     ]
 
+    let npcType = [
+        "Human", "Dwarf", "Elf", "Kobold", "Gnome", "Orc", "Goblin",
+    ]
+
     this.createNPC = function(level){
         // create a NPC
+        let charLevel = level
         let npc = {
             "name" : "Enemy", // random from pool
-            "level": Math.floor(Math.random() * 3) + (level - 1), // logic to create level based on user level
+            "level": Math.floor(Math.random() * 3) + (charLevel - 1), // logic to create level based on user level
             "health": 10, // health is based on level
             "attack": 2, // random amount based on its level
+            "type": npcType[Math.floor(Math.random() * npcType.length)], // type of NPC
+            "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(npc)
         this.npcList.push(npc)
@@ -22,9 +29,10 @@ var npcManager = (function(){
 
     this.createBoss = function(level){
         // create a boss
+        let charLevel = level
         let bossNPC= {
             "name" : "Boss", // random from pool
-            "level": level++, // logic to create level based on user level
+            "level": charLevel += 2, // boss is 2 levels higher than character
             "health": 15, // health is based on level
             "attack": 3, // random amount based on its level
             "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above

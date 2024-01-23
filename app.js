@@ -47,7 +47,11 @@ $(function(){
             let level = userManager.getLevel()
             npcManager.createNPC(level)
         });
-        
+    
+    $("#createBoss").click(function(){
+            let level = userManager.getLevel()
+            npcManager.createBoss(level)
+        });
 })
 
 function getInventoryString(delimiter) {
