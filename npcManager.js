@@ -1,5 +1,6 @@
 var npcManager = (function(){
-    this.npcList = []
+    
+    let npcList = []
     
     let lootTable = [
         // NPC loot table
@@ -11,7 +12,7 @@ var npcManager = (function(){
         "Human", "Dwarf", "Elf", "Kobold", "Gnome", "Orc", "Goblin",
     ]
 
-    this.createNPC = function(level){
+    createNPC = function(level){
         // create a NPC
         let charLevel = level
         let npc = {
@@ -23,14 +24,14 @@ var npcManager = (function(){
             "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(npc)
-        this.npcList.push(npc)
+        npcList.push(npc)
         return npc
     };
 
-    this.createBoss = function(level){
+    createBoss = function(level){
         // create a boss
         let charLevel = level
-        let bossNPC= {
+        let bossNPC = {
             "name" : "Boss", // random from pool
             "level": charLevel += 2, // boss is 2 levels higher than character
             "health": 15, // health is based on level
@@ -38,19 +39,19 @@ var npcManager = (function(){
             "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(bossNPC)
-        this.npcList.push(bossNPC)
+        npcList.push(bossNPC)
         return bossNPC
     }
 
-    this.getNPCs = function(){
+    getNPCs = function(){
         // view all NPCs
-        console.log(this.npcList)
-        return this.npcList
+        console.log(npcList)
+        return npcList
     };
 
-    this.save = function() {
+    saveNPC = function() {
         // save NPC list
-        let npcListString = JSON.stringify(this.npcList)
+        let npcListString = JSON.stringify(npcList)
         localStorage.setItem("npcList", npcListString)
     }
 
@@ -60,11 +61,11 @@ var npcManager = (function(){
         }, 
         createNPC:function(level){
             createNPC(level)
-            save()
+            saveNPC()
         },
         createBoss:function(level){
             createBoss(level)
-            save()
+            saveNPC()
         },
         npcList:function(){
             getNPCs()

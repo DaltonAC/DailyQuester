@@ -1,15 +1,16 @@
-var userManager = (function(){
-    this.character = {};
-    this.inventory = [];
+let userManager = (function(){
+    
+    let character = {};
+    let inventory = [];
 
-    this.createCharacter = function(){
+    createCharacter = function(){
         // create a character
         let character = {
             "name": "Lord Defaulty",
             "level": 1,
             "experience": 0,
-            "maxHealth": 10,
             "health": 10,
+            "maxHealth": 10,
             "strength": 1,
             "wisdom": 1,
             "charisma": 1
@@ -17,20 +18,20 @@ var userManager = (function(){
         return character
     };
 
-    this.getCharacter = function(){
+    getCharacter = function(){
         // view character sheet
-        console.log(this.character)
-        return this.character
+        console.log(character)
+        return character
     }
 
-    this.resetCharacter = function(){
+    resetCharacter = function(){
         // reset character + inventory to default
-        this.character = createCharacter()
-        this.inventory = createInventory()
+        character = createCharacter()
+        inventory = createInventory()
         console.log("Character has been reset.")
     }
     
-    this.createInventory = function(){
+    createInventory = function(){
         // creates inventory
         let inventory = [
             "Dagger", "Holy water", "Health potion","Rope"
@@ -38,50 +39,50 @@ var userManager = (function(){
         return inventory
     };
     
-    this.levelUp = function(){
+    levelUp = function(){
         // level up the character 
-       this.character.level++     
-    //    character.maxHealth += 2
-    //    character.health = character.maxHealth
+        character.level++
+        character.maxHealth += 2    
+        character.health = character.maxHealth
     }
 
-    this.getLevel = function(){
+    getLevel = function(){
         // view character level
         console.log("Your level is: ", character.level)
-        return this.character.level
+        return character.level
     }
 
-    this.getInventory = function(){
+    getInventory = function(){
         // view current inventory
-        console.log(this.inventory)
-        return this.inventory
+        console.log(inventory)
+        return inventory
     }
 
-    this.removeItem = function(){
+    removeItem = function(){
         // remove a random item from inventory
-        let ran = Math.floor(Math.random() * this.inventory.length);
-        let removed = this.inventory.splice(ran, 1)[0]
+        let ran = Math.floor(Math.random() * inventory.length);
+        let removed = inventory.splice(ran, 1)[0]
         console.log(removed + " was removed from inventory.")
     }
 
-    this.save = function() {
+    saveCharacter = function(){
         // save character + inventory
-        let characterString = JSON.stringify(this.character)
-        let inventoryString = JSON.stringify(this.inventory)
+        let characterString = JSON.stringify(character)
+        let inventoryString = JSON.stringify(inventory)
         localStorage.setItem("character", characterString)
         localStorage.setItem("inventory", inventoryString)
-        console.log(this.character.name + " has been saved!")
+        console.log("Saved character + inventory")
     }
     
     
     return {
         initialize:function(){
-            character = localStorage.getItem("character") === null ? this.createCharacter() : JSON.parse(localStorage.getItem("character"))
-            inventory = localStorage.getItem("inventory") === null ? this.createInventory() : JSON.parse(localStorage.getItem("inventory"))
+            character = localStorage.getItem("character") === null ? createCharacter() : JSON.parse(localStorage.getItem("character"))
+            inventory = localStorage.getItem("inventory") === null ? createInventory() : JSON.parse(localStorage.getItem("inventory"))
         }, 
         levelUp:function(){
-            levelUp()
-            save()
+            levelUp(),
+            saveCharacter()
         },
         getLevel:function(){
             return getLevel()
@@ -91,16 +92,15 @@ var userManager = (function(){
         },
         removeItem:function(){
             removeItem()
-            save()
+            saveCharacter()
         },
         resetCharacter:function(){
             resetCharacter()
-            save()
+            saveCharacter()
         },
         getCharacter:function(){
-            save()
             return getCharacter()
-        }
+        },
     }
 }())
 
