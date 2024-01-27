@@ -34,7 +34,8 @@ $(function(){
             let questName = $('#questName').val();
             let questText = $('#questText').val();
             let difficulty = $('#difficulty').val();
-            questManager.createQuest(questName, questText, difficulty);
+            let type = $('type').val();
+            questManager.createQuest(questName, questText, difficulty, type);
             return false;
         });
      

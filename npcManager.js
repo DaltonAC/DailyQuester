@@ -18,8 +18,7 @@ var npcManager = (function(){
         let npc = {
             "name" : "Enemy", // random from pool
             "level": Math.floor(Math.random() * 3) + (charLevel - 1), // logic to create level based on user level
-            "health": 10, // health is based on level
-            "attack": 2, // random amount based on its level
+            "health": 10 + level, // health is based on level
             "type": npcType[Math.floor(Math.random() * npcType.length)], // type of NPC
             "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
@@ -35,7 +34,6 @@ var npcManager = (function(){
             "name" : "Boss", // random from pool
             "level": charLevel += 2, // boss is 2 levels higher than character
             "health": 15, // health is based on level
-            "attack": 3, // random amount based on its level
             "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(bossNPC)

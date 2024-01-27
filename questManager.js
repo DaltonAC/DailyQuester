@@ -2,10 +2,10 @@ let questManager = (function(){
     
     let questList = []
 
-    createQuest = function(questName, questText, difficulty){
+    createQuest = function(questName, questText, difficulty, type){
         // create a quest
-        let quest = [questName, questText, difficulty]
-        this.questList.push(quest)
+        let quest = [questName, questText, difficulty, type]
+        questList.push(quest)
         console.log("Created quest: " + quest.questName)
         return quest
     };
@@ -15,6 +15,12 @@ let questManager = (function(){
         console.log("Current quest list: " + questList)
         return questList
     };
+
+    CompleteQuest = function(quest) {
+        // mark quest as complete from questList
+        // or remove quest from questList instead
+        // update character experaince + stats?
+    }
 
     saveQuests = function() {
         // save quest list
@@ -26,10 +32,12 @@ let questManager = (function(){
     return {
         initialize:function(){
             // allow saving of quest list
-            questList = localStorage.getItem("questList") === null ? getQuests() : JSON.parse(localStorage.getItem("questList"))
+            // save functiom not working on refresh
+            // see inventory management save
+            questList = localStorage.getItem("questList") === null ? questList : JSON.parse(localStorage.getItem("questList"))
         }, 
-        createQuest:function(questName, questText, difficulty){
-            createQuest(questName, questText, difficulty)
+        createQuest:function(questName, questText, difficulty, type){
+            createQuest(questName, questText, difficulty, type)
             saveQuests()
         },
         getQuests:function(){
