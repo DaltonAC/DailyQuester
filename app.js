@@ -53,6 +53,15 @@ $(function(){
             let level = userManager.getLevel()
             npcManager.createBoss(level)
         });
+        
+    $("#attack").click(function(){
+            let damage = getCharacter().health -= 5
+            // Can hit character health, does not save.
+            // Attack should be a NPC and Character sep function, not app.JS
+            // Opposite function for regain health from potion / level up
+            console.log(damage)
+            return damage
+        });
 })
 
 function getInventoryString(delimiter) {
