@@ -55,11 +55,13 @@ $(function(){
         });
         
     $("#attack").click(function(){
-            let damage = getCharacter().health -= 5
+            let charStrength = userManager.getCharacter().strength
+            console.log(charStrength)
+            let damage = charStrength += 10
+            console.log(damage)
             // Can hit character health, does not save.
             // Attack should be a NPC and Character sep function, not app.JS
             // Opposite function for regain health from potion / level up
-            console.log(damage)
             return damage
         });
 })

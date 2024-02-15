@@ -6,11 +6,11 @@ var npcManager = (function(){
         // NPC loot table
         "Holy water", "Bronze key", "Gold key", "Red key", 
         "Rope", "Lockpick", "Health potion", "Wooden trinket",
-    ]
+        ]   
 
     let npcType = [
         "Human", "Dwarf", "Elf", "Kobold", "Gnome", "Orc", "Goblin",
-    ]
+        ]
 
     createNPC = function(level){
         // create a NPC
