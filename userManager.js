@@ -6,14 +6,14 @@ let userManager = (function(){
     createCharacter = function(){
         // create a character
         let character = {
-            "name": "Lord Defaulty",
-            "level": 1,
-            "experience": 0,
-            "health": 10,
-            "maxHealth": 10,
-            "strength": 1,
-            "wisdom": 1,
-            "charisma": 1
+            "Name": "Lord Defaulty",
+            "Level": 1,
+            "Experience": 0,
+            "Health": 10,
+            "MaxHealth": 10,
+            "Strength": 1,
+            "Wisdom": 1,
+            "Charisma": 1
             }
         return character
     };

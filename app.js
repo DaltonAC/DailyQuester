@@ -9,7 +9,8 @@ $(function(){
     })
 
     $("#view_character").click(function(){
-        userManager.getCharacter()
+        let vPool = getCharacterString("<br />")
+        $('#character').html(vPool);
     });
 
     $("#view_inventory").click(function(){
@@ -76,6 +77,21 @@ function getInventoryString(delimiter) {
     });
     } else {
         vPool += "Your inventory is empty!";
+    }
+    return vPool;
+}
+
+function getCharacterString(delimiter) {
+    // get character info as a string
+    let character = userManager.getCharacter()
+    let vPool="";
+    if (character) {
+        for (let key in character)
+            if (character.hasOwnProperty(key)) {
+                vPool += key.charAt(0).toUpperCase() + key.slice(1) + ": " + character[key] + delimiter;
+            }
+    } else {
+        vPool += "No character found!";
     }
     return vPool;
 }

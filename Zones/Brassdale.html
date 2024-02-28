@@ -17,34 +17,43 @@
 <body>
 
     <nav>
-    <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-warning rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+    <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-info rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" onclick="window.location.href='index.html'" type="button" role="tab" aria-selected="true">Home</button>
+          <button class="nav-link rounded-5" id="home-tab2" data-bs-toggle="tab" onclick="window.location.href='index.html'" type="button" role="tab" aria-selected="true">Home</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link rounded-5" id="profile-tab2" onclick="window.location.href='character.html'" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Character</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link rounded-5" id="contact-tab2" onclick="window.location.href='map.html'" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Map</button>
+          <button class="nav-link active rounded-5" id="contact-tab2" onclick="window.location.href='map.html'" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Map</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link rounded-5" id="contact-tab2" onclick="window.location.href='quest_builder.html'" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Quests</button>
-        </li>
+      </li>
       </ul>
     </nav>
 
-    <p>Level Up Button =><button class="btn btn-outline-primary" id="level_up">LEVEL UP</button></p>
-    <p>View Character Button =><button class="btn btn-outline-primary" id="view_character">VIEW CHARACTER</button></p>
-    <p>View Inventory Button =><button class="btn btn-outline-primary" id="view_inventory">VIEW INVENTORY</button></p>
-    <p>Remove Inventory Button =><button class="btn btn-outline-primary" id="remove_inventory">REMOVE ITEM</button></p>
-    <p>Reset All Button =><button class="btn btn-outline-primary" id="reset_all">RESET ALL</button></p>
-    <div id="inventory"></div>
-    <div id="character"></div>
+    <div class="zone-info">
+        <h1 style="text-align:center">Brassdale</h1>
+        <ul>
+            <li>
+                Tavern
+            </li>
+            <li>
+                Blacksmith
+            </li>
+            <li>
+                Bazaar
+            </li>
+            <li>
+                Apothecary
+            </li>
+            <li>
+                Temple
+            </li>
+        </ul>
+    </div>
 
-    <p>Create a NPC =><button class="btn btn-outline-primary" id="createNPC">Create NPC</button></p>
-    <p>Create a Boss =><button class="btn btn-outline-primary" id="createBoss">Create Boss</button></p>
-
-    <p>Attack Button =><button class="btn btn-outline-primary" id="attack">ATTACK</button></p>
 
 </body>
 </html>
