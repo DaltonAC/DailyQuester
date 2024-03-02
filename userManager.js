@@ -65,6 +65,12 @@ let userManager = (function(){
         console.log(removed + " was removed from inventory.")
     }
 
+    addItem = function(itemToAdd){
+        // add an item to inventory based on input
+        inventory.push(itemToAdd)
+        console.log(itemToAdd + " added to your inventory.")
+    }
+
     saveCharacter = function(){
         // save character + inventory
         let characterString = JSON.stringify(character)
@@ -101,6 +107,10 @@ let userManager = (function(){
         getCharacter:function(){
             return getCharacter()
         },
+        addItem:function(itemToAdd){
+            addItem(itemToAdd)
+            saveCharacter()
+        }
     }
 }())
 

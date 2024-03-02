@@ -25,6 +25,11 @@ $(function(){
     $("#remove_inventory").click(function(){
             userManager.removeItem()
         })
+    
+    $("#add_inventory").click(function(){;
+            let itemToAdd = $(this).text().slice("") // Retrieve value from the input field
+            userManager.addItem(itemToAdd);
+        })
 
     $("#reset_all").click(function(){
             userManager.resetCharacter()
