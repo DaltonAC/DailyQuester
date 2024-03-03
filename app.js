@@ -23,11 +23,12 @@ $(function(){
     }
 
     $("#remove_inventory").click(function(){
-            userManager.removeItem()
+            let itemToRemove = $(this).text()
+            userManager.removeItem(itemToRemove)
         })
     
-    $("#add_inventory").click(function(){;
-            let itemToAdd = $(this).text().slice("") // Retrieve value from the input field
+    $("#add_inventory").click(function(){
+            let itemToAdd = $(this).text().slice(":") // Retrieve value from the input field
             userManager.addItem(itemToAdd);
         })
 

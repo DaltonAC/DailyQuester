@@ -34,7 +34,7 @@ let userManager = (function(){
     createInventory = function(){
         // creates inventory
         let inventory = [
-            "Dagger", "Holy water", "Health potion","Rope"
+            "Dagger", "Holy water", "Health Potion","Rope"
         ]
         return inventory
     };
@@ -58,12 +58,17 @@ let userManager = (function(){
         return inventory
     }
 
-    removeItem = function(){
+    removeItem = function(itemToRemove){
         // remove a random item from inventory
-        let ran = Math.floor(Math.random() * inventory.length);
-        let removed = inventory.splice(ran, 1)[0]
-        console.log(removed + " was removed from inventory.")
-    }
+        // let ran = Math.floor(Math.random() * inventory.length);
+        // let removed = inventory.splice(ran, 1)[0]
+        for (let i = inventory.length - 1; i >= 0; i--) {
+            if (inventory[i] === itemToRemove) {
+                inventory.splice(i, 1);
+                console.log(itemToRemove + " removed from your inventory.")
+            }
+        }        
+        }
 
     addItem = function(itemToAdd){
         // add an item to inventory based on input
@@ -87,8 +92,8 @@ let userManager = (function(){
             inventory = localStorage.getItem("inventory") === null ? createInventory() : JSON.parse(localStorage.getItem("inventory"))
         }, 
         levelUp:function(){
-            levelUp(),
-            saveCharacter()
+            levelUp()
+            return saveCharacter()
         },
         getLevel:function(){
             return getLevel()
@@ -96,20 +101,20 @@ let userManager = (function(){
         getInventory:function(){
             return getInventory()
         },
-        removeItem:function(){
-            removeItem()
-            saveCharacter()
+        removeItem:function(itemToRemove){
+            removeItem(itemToRemove)
+            return saveCharacter()
         },
         resetCharacter:function(){
             resetCharacter()
-            saveCharacter()
+            return saveCharacter()
         },
         getCharacter:function(){
             return getCharacter()
         },
         addItem:function(itemToAdd){
             addItem(itemToAdd)
-            saveCharacter()
+            return saveCharacter()
         }
     }
 }())
