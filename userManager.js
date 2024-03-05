@@ -11,6 +11,7 @@ let userManager = (function(){
             "Experience": 0,
             "Health": 10,
             "MaxHealth": 10,
+            "Armor": 100,
             "Strength": 1,
             "Wisdom": 1,
             "Charisma": 1
@@ -34,22 +35,22 @@ let userManager = (function(){
     createInventory = function(){
         // creates inventory
         let inventory = [
-            "Dagger", "Holy water", "Health Potion","Rope"
+            "Dagger", "Health Potion", "Lantern"
         ]
         return inventory
     };
     
     levelUp = function(){
         // level up the character 
-        character.level++
-        character.maxHealth += 2    
-        character.health = character.maxHealth
+        character.Level++
+        character.MaxHealth += 2    
+        character.Health = character.maxHealth
     }
 
     getLevel = function(){
         // view character level
-        console.log("Your level is: ", character.level)
-        return character.level
+        console.log("Your level is: ", character.Level)
+        return character.Level
     }
 
     getInventory = function(){

@@ -6,6 +6,7 @@ var npcManager = (function(){
         // NPC loot table
         "Holy water", "Bronze key", "Gold key", "Red key", 
         "Rope", "Lockpick", "Health potion", "Wooden trinket",
+        "Lantern", "Broken Key", "Scroll",
         ]   
 
     let npcType = [
@@ -16,11 +17,11 @@ var npcManager = (function(){
         // create a NPC
         let charLevel = level
         let npc = {
-            "name" : "Enemy", // random from pool
-            "level": Math.floor(Math.random() * 3) + (charLevel - 1), // logic to create level based on user level
-            "health": 10 + level, // health is based on level
-            "type": npcType[Math.floor(Math.random() * npcType.length)], // type of NPC
-            "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
+            "Name" : "Enemy", // random from pool
+            "Level": Math.floor(Math.random() * 3) + (charLevel - 1), // logic to create level based on user level
+            "Health": 10 + level, // health is based on level
+            "Type": npcType[Math.floor(Math.random() * npcType.length)], // type of NPC
+            "Loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(npc)
         npcList.push(npc)
@@ -31,10 +32,10 @@ var npcManager = (function(){
         // create a boss
         let charLevel = level
         let bossNPC = {
-            "name" : "Boss", // random from pool
-            "level": charLevel += 2, // boss is 2 levels higher than character
-            "health": 15, // health is based on level
-            "loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
+            "Name" : "Boss", // random from pool
+            "Level": charLevel += 2, // boss is 2 levels higher than character
+            "Health": 15, // health is based on level
+            "Loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(bossNPC)
         npcList.push(bossNPC)

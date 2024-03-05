@@ -28,7 +28,7 @@ $(function(){
         })
     
     $("#add_inventory").click(function(){
-            let itemToAdd = $(this).text().slice(":") // Retrieve value from the input field
+            let itemToAdd = $(this).text()
             userManager.addItem(itemToAdd);
         })
 
@@ -62,7 +62,7 @@ $(function(){
         });
         
     $("#attack").click(function(){
-            let charStrength = userManager.getCharacter().strength
+            let charStrength = userManager.getCharacter().Strength
             console.log(charStrength)
             let damage = charStrength += 10
             console.log(damage)
