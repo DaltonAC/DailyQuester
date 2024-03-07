@@ -61,16 +61,33 @@ $(function(){
             npcManager.createBoss(level)
         });
         
-    $("#attack").click(function(){
+    $("#characterAttack").click(function(){
             let charStrength = userManager.getCharacter().Strength
-            console.log(charStrength)
             let damage = charStrength += 10
-            console.log(damage)
+            console.log("You deal: " + damage + " damage.")
             // Can hit character health, does not save.
             // Attack should be a NPC and Character sep function, not app.JS
             // Opposite function for regain health from potion / level up
             return damage
         });
+    
+    $("#npcAttack").click(function(){
+        let goblinNPC = npcManager.npcList().find(npcSearch => npcSearch.Type === "Goblin");
+
+        if (goblinNPC) {
+            console.log("Found Goblin NPC:", goblinNPC);
+            let damage = goblinNPC.Level + 1
+            console.log("The Goblin deals " + damage + " damage.");
+            return damage
+        } else {
+            console.log("Goblin NPC not found in the list.");
+        }
+    });
+
+    $("#checkHealth").click(function(){
+        userManager.healthCheck()
+    });
+
 })
 
 function getInventoryString(delimiter) {

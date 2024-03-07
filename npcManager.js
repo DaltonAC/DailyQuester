@@ -13,6 +13,16 @@ var npcManager = (function(){
         "Human", "Dwarf", "Elf", "Kobold", "Gnome", "Orc", "Goblin",
         ]
 
+    let Goblins = [
+        // level 1-5 Goblins
+        {
+            "Name": "Lowbie Goblin",
+            "Level": 1,
+            "Health": 3,
+            "Type": "Goblin",
+            "Loot": "Junk Mail",
+        }
+    ]
     createNPC = function(level){
         // create a NPC
         let charLevel = level
@@ -60,14 +70,15 @@ var npcManager = (function(){
         }, 
         createNPC:function(level){
             createNPC(level)
-            saveNPC()
+            return saveNPC()
         },
         createBoss:function(level){
             createBoss(level)
-            saveNPC()
+            return saveNPC()
         },
         npcList:function(){
             getNPCs()
-        }
+            return Goblins
+        },
     }
 }())

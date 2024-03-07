@@ -77,6 +77,28 @@ let userManager = (function(){
         console.log(itemToAdd + " added to your inventory.")
     }
 
+    repairArmor = function(){
+        // resets armor to default
+        character.Armor = 100
+        console.log("Armor has been repaired.")
+    }
+
+    healthCheck = function(){
+        // checks current health of character to see if their dead, then respawns wounded
+
+        if (character.Health <= 0){
+            console.log("You have died!")
+            character.Armor -= 25
+            character.Health = character.MaxHealth - 5
+            console.log("You have been brought back to live, but are wounded and have damaged armor.")
+        } else if (character.Health <= character.MaxHealth / 2){
+            console.log("You are below half health! Be Careful!")
+        } else {
+            console.log("You are ok.")
+        }
+
+    }
+
     saveCharacter = function(){
         // save character + inventory
         let characterString = JSON.stringify(character)
@@ -115,6 +137,14 @@ let userManager = (function(){
         },
         addItem:function(itemToAdd){
             addItem(itemToAdd)
+            return saveCharacter()
+        },
+        repairArmor:function(){
+            repairArmor()
+            return saveCharacter()
+        },
+        healthCheck:function(){
+            healthCheck()
             return saveCharacter()
         }
     }
