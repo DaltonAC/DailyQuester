@@ -78,7 +78,7 @@ $(function(){
             console.log("Found Goblin NPC:", goblinNPC);
             let damage = goblinNPC.Level + 1
             console.log("The Goblin deals " + damage + " damage.");
-            return damage
+            return userManager.getCharacter().Health -= damage
         } else {
             console.log("Goblin NPC not found in the list.");
         }
