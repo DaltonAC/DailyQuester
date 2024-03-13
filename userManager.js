@@ -21,7 +21,6 @@ let userManager = (function(){
 
     getCharacter = function(){
         // view character sheet
-        console.log(character)
         return character
     }
 
@@ -55,7 +54,6 @@ let userManager = (function(){
 
     getInventory = function(){
         // view current inventory
-        console.log(inventory)
         return inventory
     }
 
