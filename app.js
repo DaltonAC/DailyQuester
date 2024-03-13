@@ -52,6 +52,7 @@ $(function(){
         });
      
     $("#createNPC").click(function () {
+            let npcType = prompt("")
             let npcData = getNPC("<br />");
             $("#currentNPC").html(npcData.html);
         });
@@ -124,8 +125,8 @@ function getQuestsString(delimiter) {
     return vPool;
 }
 
-function getNPC(delimter) {
-    let NPC = npcManager.npcList().find(npcSearch => npcSearch.Type === "Goblin");
+function getNPC(delimter, npcType) {
+    let NPC = npcManager.npcList().find(npcSearch => npcSearch.Type === npcType);
     console.log(NPC);
     let vPool = "";
     if (NPC) {
