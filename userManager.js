@@ -81,6 +81,14 @@ let userManager = (function(){
         console.log("Armor has been repaired.")
     }
 
+    enhanceArmor = function(){
+        if (character.Armor <= 100) {
+            character.Armor += 10
+        } else {
+            console.log("Armor is max strength")
+        }
+    }
+
     healthCheck = function(){
         // checks current health of character to see if their dead, then respawns wounded
 
@@ -139,6 +147,10 @@ let userManager = (function(){
         },
         repairArmor:function(){
             repairArmor()
+            return saveCharacter()
+        },
+        enhanceArmor:function(){
+            enhanceArmor()
             return saveCharacter()
         },
         healthCheck:function(){
