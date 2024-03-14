@@ -29,6 +29,7 @@ $(function(){
     
     $("#add_inventory").click(function(){
             let itemToAdd = $(this).text()
+            console.log(itemToAdd)
             userManager.addItem(itemToAdd);
         })
 
