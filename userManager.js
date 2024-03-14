@@ -41,7 +41,7 @@ let userManager = (function(){
     
     levelUp = function(){
         // level up the character 
-        character.Level++
+        character.Level += 1
         character.MaxHealth += 2    
         character.Health = character.maxHealth
     }
