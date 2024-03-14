@@ -80,6 +80,13 @@ $(function(){
         userManager.healthCheck()
     });
 
+    $("#repairArmor").click(function(){
+        userManager.repairArmor()
+    })
+
+    $("#enhanceArmor").click(function(){
+        userManager.enhanceArmor()
+    })
 })
 
 function getInventoryString(delimiter) {
