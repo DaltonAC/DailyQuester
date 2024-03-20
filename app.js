@@ -52,10 +52,9 @@ $(function(){
             $('#questList').html(vPool);
         });
      
-    $("#createNPC").click(function () {
-            let npcType = prompt("")
-            let npcData = getNPC("<br />");
-            $("#currentNPC").html(npcData.html);
+    $("#createNPC").click(function(){
+            let level = userManager.getLevel()
+            npcManager.createNPC(level)
         });
     
     $("#createBoss").click(function(){
@@ -64,14 +63,12 @@ $(function(){
         });
         
     $("#userAttack").click(function () {
-            let npcData = getNPC("<br />");
-            userAttack(npcData.npc);
+            // re do
         });
     
     $("#npcAttack").click(function(){
-        let npcData = getNPC("<br />");
-        npcAttack(npcData.npc);
-    });
+        // redo
+        });
 
     if ($("#currentNPC").length){
         let vPool = getInventoryString("<br />")
@@ -79,15 +76,15 @@ $(function(){
 
     $("#checkHealth").click(function(){
         userManager.healthCheck()
-    });
+        });
 
     $("#repairArmor").click(function(){
         userManager.repairArmor()
-    })
+        })
 
     $("#enhanceArmor").click(function(){
         userManager.enhanceArmor()
-    })
+        })
 })
 
 function getInventoryString(delimiter) {
@@ -133,38 +130,40 @@ function getQuestsString(delimiter) {
     return vPool;
 }
 
-function getNPC(delimter, npcType) {
-    let NPC = npcManager.npcList().find(npcSearch => npcSearch.Type === npcType);
-    console.log(NPC);
-    let vPool = "";
-    if (NPC) {
-        vPool += `<div>${NPC.Name}</div>`;
-        vPool += `<button class="attackButton" onclick="userAttack(${JSON.stringify(NPC)})">Attack</button>`;
-    } else {
-        vPool += "No Goblin NPC found.";
-    }
-    return { html: vPool, npc: NPC };
-}
+// function getNPC(delimter, npcType) {
+//     let NPC = npcManager.npcList().find(npcSearch => npcSearch.Type === npcType);
+//     console.log(NPC);
+//     let vPool = "";
+//     if (NPC) {
+//         vPool += `<div>${NPC.Name}</div>`;
+//         vPool += `<button class="attackButton" onclick="userAttack(${JSON.stringify(NPC)})">Attack</button>`;
+//     } else {
+//         vPool += "No Goblin NPC found.";
+//     }
+//     return { html: vPool, npc: NPC };
+// }
 
-function npcAttack(npc) {
-    if (npc) {
-        console.log("Found NPC:", npc);
-        let damage = npc.Level + 1;
-        console.log("The NPC deals " + damage + " damage.");
-        userManager.getCharacter().Health -= damage;
-    } else {
-        console.log("NPC not found.");
-    }
-}
 
-function userAttack(NPC) {
-    if (NPC) {
-        let charStrength = userManager.getCharacter().Strength;
-        let damage = charStrength + 10;
-        console.log("You deal: " + damage + " damage to " + NPC.Name + ".");
-        NPC.Health -= damage;
-        console.log(NPC);
-    } else {
-        console.log("Invalid NPC object.");
-    }
-}
+
+// function npcAttack(npc) {
+//     if (npc) {
+//         console.log("Found NPC:", npc);
+//         let damage = npc.Level + 1;
+//         console.log("The NPC deals " + damage + " damage.");
+//         userManager.getCharacter().Health -= damage;
+//     } else {
+//         console.log("NPC not found.");
+//     }
+// }
+
+// function userAttack(NPC) {
+//     if (NPC) {
+//         let charStrength = userManager.getCharacter().Strength;
+//         let damage = charStrength + 10;
+//         console.log("You deal: " + damage + " damage to " + NPC.Name + ".");
+//         NPC.Health -= damage;
+//         console.log(NPC);
+//     } else {
+//         console.log("Invalid NPC object.");
+//     }
+// }
