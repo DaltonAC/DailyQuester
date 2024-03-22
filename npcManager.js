@@ -1,28 +1,18 @@
 var npcManager = (function(){
     
-    let npcList = []
+    let npc = {};
     
     let lootTable = [
         // NPC loot table
         "Holy water", "Bronze key", "Gold key", "Red key", 
         "Rope", "Lockpick", "Health potion", "Wooden trinket",
         "Lantern", "Broken Key", "Scroll",
-        ]   
+        ];   
 
     let npcType = [
         "Human", "Dwarf", "Elf", "Kobold", "Gnome", "Orc", "Goblin",
-        ]
+        ];
 
-    let Goblins = [
-        // level 1-5 Goblins
-        {
-            "Name": "Lowbie Goblin",
-            "Level": 1,
-            "Health": 3,
-            "Type": "Goblin",
-            "Loot": "Junk Mail",
-        }
-    ]
     createNPC = function(level){
         // create a NPC
         let charLevel = level
@@ -34,7 +24,7 @@ var npcManager = (function(){
             "Loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(npc)
-        npcList.push(npc)
+        saveNPC();
         return npc
     };
 
@@ -49,36 +39,36 @@ var npcManager = (function(){
         }
         console.log(bossNPC)
         npcList.push(bossNPC)
-        return bossNPC
+        return bossNPC;
     }
 
-    getNPCs = function(){
+    getNPC = function(){
         // view all NPCs
-        console.log(npcList)
-        return npcList
+        console.log(npc)
+        return npc;
     };
 
     saveNPC = function() {
         // save NPC list
-        let npcListString = JSON.stringify(npcList)
-        localStorage.setItem("npcList", npcListString)
+        let npcString = JSON.stringify(npc)
+        localStorage.setItem("npc", npcString)
     }
+
+    // saveBoss = function() {
+    //     let bossString = JSON.stringify(boss)
+    //     localStorage.setItem("boss", boss)
+    // }
 
     return {
         initialize:function(){
-            npcList = localStorage.getItem("npcList") === null ? getNPCs() : JSON.parse(localStorage.getItem("npcList"))
+            npc = localStorage.getItem("npc") === null ? getNPC() : JSON.parse(localStorage.getItem("npc"))
+            // boss = localStorage.getItem("boss") === null ? get
         }, 
         createNPC:function(level){
-            createNPC(level)
-            return saveNPC()
+            return createNPC(level)
         },
         createBoss:function(level){
-            createBoss(level)
-            return saveNPC()
-        },
-        npcList:function(){
-            getNPCs()
-            return Goblins
+            return createBoss(level)
         },
     }
 }())

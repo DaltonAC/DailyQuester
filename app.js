@@ -2,7 +2,11 @@ questManager.initialize();
 userManager.initialize();
 npcManager.initialize();
 
+
 $(function(){
+
+    let currentTarget = {}
+
     $("#level_up").click(function(){
         userManager.levelUp()
         userManager.getLevel()
@@ -52,9 +56,10 @@ $(function(){
             $('#questList').html(vPool);
         });
      
-    $("#createNPC").click(function(){
+    $("#createNPC").click(function(currentTarget){
             let level = userManager.getLevel()
-            npcManager.createNPC(level)
+            let NPC = npcManager.createNPC(level)
+            console.log(NPC)
         });
     
     $("#createBoss").click(function(){
@@ -62,8 +67,8 @@ $(function(){
             npcManager.createBoss(level)
         });
         
-    $("#userAttack").click(function () {
-            // re do
+    $("#userAttack").click(function() {
+            console.log(currentTarget)
         });
     
     $("#npcAttack").click(function(){
