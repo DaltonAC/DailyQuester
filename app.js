@@ -5,7 +5,7 @@ npcManager.initialize();
 
 $(function(){
 
-    let currentTarget = {}
+    let currentNPC = {}
 
     $("#level_up").click(function(){
         userManager.levelUp()
@@ -58,17 +58,19 @@ $(function(){
      
     $("#createNPC").click(function(currentTarget){
             let level = userManager.getLevel()
-            let NPC = npcManager.createNPC(level)
-            console.log(NPC)
+            currentNPC = npcManager.createNPC(level)
+            return currentNPC;
         });
     
     $("#createBoss").click(function(){
             let level = userManager.getLevel()
-            npcManager.createBoss(level)
+            let boss = npcManager.createBoss(level)
+            return boss
         });
         
     $("#userAttack").click(function() {
-            console.log(currentTarget)
+            currentNPC.Health -= 1
+            console.log(currentNPC)
         });
     
     $("#npcAttack").click(function(){

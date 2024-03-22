@@ -78,5 +78,8 @@ var npcManager = (function(){
         createBoss:function(level){
             return createBoss(level)
         },
+        getNPC:function(){
+            return getNPC()
+        }
     }
 }())
