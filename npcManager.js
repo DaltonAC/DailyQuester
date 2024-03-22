@@ -1,6 +1,8 @@
 var npcManager = (function(){
     
     let npc = {};
+
+    let boss = {};
     
     let lootTable = [
         // NPC loot table
@@ -25,7 +27,7 @@ var npcManager = (function(){
         }
         console.log(npc)
         saveNPC();
-        return npc
+        return npc;
     };
 
     createBoss = function(level){
@@ -38,7 +40,7 @@ var npcManager = (function(){
             "Loot": lootTable[Math.floor(Math.random() * lootTable.length)], // random from loot table above
         }
         console.log(bossNPC)
-        npcList.push(bossNPC)
+        saveBoss();
         return bossNPC;
     }
 
@@ -48,21 +50,27 @@ var npcManager = (function(){
         return npc;
     };
 
+    getBoss = function(){
+        console.log(boss)
+        return boss;
+    }
+
     saveNPC = function() {
-        // save NPC list
+        // save the NPC
         let npcString = JSON.stringify(npc)
         localStorage.setItem("npc", npcString)
     }
 
-    // saveBoss = function() {
-    //     let bossString = JSON.stringify(boss)
-    //     localStorage.setItem("boss", boss)
-    // }
+    saveBoss = function() {
+        // save the boss
+        let bossString = JSON.stringify(boss)
+        localStorage.setItem("boss", bossString)
+    }
 
     return {
         initialize:function(){
             npc = localStorage.getItem("npc") === null ? getNPC() : JSON.parse(localStorage.getItem("npc"))
-            // boss = localStorage.getItem("boss") === null ? get
+            boss = localStorage.getItem("boss") === null ? getBoss() : JSON.parse(localStorage.getItem("boss"))
         }, 
         createNPC:function(level){
             return createNPC(level)
