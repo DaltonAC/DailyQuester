@@ -69,8 +69,12 @@ $(function(){
         });
         
     $("#userAttack").click(function() {
-            currentNPC.Health -= 1
-            console.log(currentNPC)
+            if (currentNPC.Health > 0) {
+                currentNPC.Health -= 1
+                console.log(currentNPC.Health)
+            } else {
+                console.log("The NPC has been killed.")
+            }
         });
     
     $("#npcAttack").click(function(){
