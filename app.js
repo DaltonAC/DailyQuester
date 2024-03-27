@@ -84,7 +84,11 @@ $(function(){
         });
     
     $("#npcAttack").click(function(){
-        // redo
+        // attack user based on level + dice roll
+        // decrease user armor
+        // randomly drop loot
+        // should auto execute when user attacks NPC
+
         });
 
     if ($("#currentNPC").length){
@@ -96,8 +100,18 @@ $(function(){
         });
 
     $("#repairArmor").click(function(){
-        userManager.repairArmor()
-        })
+        // add cost based on amount to repair
+        let currentArmor = userManager.getCharacter().Armor
+        if (currentArmor <= 25) {
+            // add cost
+            userManager.repairArmor()
+        } else if (currentArmor <= 50) {
+            // add cost
+            userManager.repairArmor()
+        } else {
+            // add cost
+            userManager.repairArmor()
+        }})
 
     $("#enhanceArmor").click(function(){
         userManager.enhanceArmor()
