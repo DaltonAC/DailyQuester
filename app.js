@@ -26,16 +26,22 @@ $(function(){
         let vPool = getInventoryString("<br />")
     }
 
-    $("#remove_inventory").click(function(){
+    $(".remove_inventory").click(function(){
             let itemToRemove = $(this).text()
-            userManager.removeItem(itemToRemove)
-        })
+            userManager.removeItem(itemToRemove);
+    });
     
-    $("#add_inventory").click(function(){
+    $(".add_inventory").click(function(){
+            let currentInventory = userManager.getInventory()
+            console.log(currentInventory)
             let itemToAdd = $(this).text()
-            console.log(itemToAdd)
-            userManager.addItem(itemToAdd);
-        })
+            if (currentInventory.includes(itemToAdd) && itemToAdd != "Health Potion") {
+                console.log("Can not carry anymore of that item!")
+            } else {
+                userManager.addItem(itemToAdd);    
+            }
+    });
+        
 
     $("#reset_all").click(function(){
             userManager.resetCharacter()
