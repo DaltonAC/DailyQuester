@@ -160,7 +160,10 @@ function npcAttack() {
     let userHealth = userManager.getCharacter().Health
     
     if (userHealth > 0) {
-        userManager.getCharacter().Health -= 5
+        let npcDamage = Math.floor(Math.random() * (userLevel + 1));
+        userManager.getCharacter().Health -= npcDamage
+        console.log(npcDamage)
+        userManager.getCharacter().Armor -= 1
     } else {
         userManager.healthCheck()
     }
