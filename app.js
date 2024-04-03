@@ -78,18 +78,12 @@ $(function(){
             if (currentNPC.Health > 0) {
                 currentNPC.Health -= 1
                 console.log(currentNPC.Health)
+                npcAttack()
             } else {
                 console.log("The NPC has been killed.")
             }
         });
     
-    $("#npcAttack").click(function(){
-        // attack user based on level + dice roll
-        // decrease user armor
-        // randomly drop loot
-        // should auto execute when user attacks NPC
-
-        });
 
     if ($("#currentNPC").length){
         let vPool = getInventoryString("<br />")
@@ -159,6 +153,17 @@ function getQuestsString(delimiter) {
         vPool += "Your quest log is empty!";
     }
     return vPool;
+}
+
+function npcAttack() {
+    let userLevel = userManager.getCharacter().Level
+    let userHealth = userManager.getCharacter().Health
+    
+    if (userHealth > 0) {
+        userManager.getCharacter().Health -= 5
+    } else {
+        userManager.healthCheck()
+    }
 }
 
 // function getNPC(delimter, npcType) {
