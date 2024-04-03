@@ -96,7 +96,7 @@ let userManager = (function(){
             console.log("You have died!")
             character.Armor -= 25
             character.Health = character.MaxHealth - 5
-            console.log("You have been brought back to live, but are wounded and have damaged armor.")
+            console.log("You have been brought back to life, but are wounded with badly damaged armor.")
         } else if (character.Health <= character.MaxHealth / 2){
             console.log("You are below half health! Be Careful!")
         } else {

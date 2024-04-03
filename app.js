@@ -58,31 +58,36 @@ $(function(){
         });
      
     $("#getQuests").click(function(){
-            let vPool = getQuestsString("<br />")
-            $('#questList').html(vPool);
-        });
+        let vPool = getQuestsString("<br />")
+        $('#questList').html(vPool);
+    });
      
     $("#createNPC").click(function(currentTarget){
-            let level = userManager.getLevel()
-            currentNPC = npcManager.createNPC(level)
-            return currentNPC;
-        });
+        let level = userManager.getLevel()
+        currentNPC = npcManager.createNPC(level)
+        return currentNPC;
+    });
     
     $("#createBoss").click(function(){
-            let level = userManager.getLevel()
-            let boss = npcManager.createBoss(level)
-            return boss
-        });
+        let level = userManager.getLevel()
+        let boss = npcManager.createBoss(level)
+        return boss
+    });
         
     $("#userAttack").click(function() {
-            if (currentNPC.Health > 0) {
-                currentNPC.Health -= 1
-                console.log(currentNPC.Health)
-                npcAttack()
-            } else {
-                console.log("The NPC has been killed.")
-            }
-        });
+        let npcHealth = currentNPC.Health
+        let userDamage = Math.floor(Math.random() * (userManager.getCharacter().Level + 2));
+
+        if (npcHealth > 0 && userDamage > 0) {
+            currentNPC.Health -= userDamage
+            console.log(`You deal ${userDamage} damage to the ${currentNPC.Type} `)
+            npcAttack()
+        } else if (npcHealth > 0 && userDamage <= 0) {
+            console.log("You missed!")
+        } else if (npcHealth <= 0) {
+            console.log(`The ${currentNPC.Type} has been defeated!`)
+        }
+    });
     
 
     if ($("#currentNPC").length){
@@ -110,7 +115,7 @@ $(function(){
     $("#enhanceArmor").click(function(){
         userManager.enhanceArmor()
         })
-})
+});
 
 function getInventoryString(delimiter) {
     // get inventory as a string
@@ -124,7 +129,7 @@ function getInventoryString(delimiter) {
         vPool += "Your inventory is empty!";
     }
     return vPool;
-}
+};
 
 function getCharacterString(delimiter) {
     // get character info as a string
@@ -139,7 +144,7 @@ function getCharacterString(delimiter) {
         vPool += "No character found!";
     }
     return vPool;
-}
+};
 
 function getQuestsString(delimiter) {
     // get quest list as a string
@@ -153,7 +158,7 @@ function getQuestsString(delimiter) {
         vPool += "Your quest log is empty!";
     }
     return vPool;
-}
+};
 
 function npcAttack() {
     let userLevel = userManager.getCharacter().Level
@@ -162,12 +167,11 @@ function npcAttack() {
     if (userHealth > 0) {
         let npcDamage = Math.floor(Math.random() * (userLevel + 1));
         userManager.getCharacter().Health -= npcDamage
-        console.log(npcDamage)
         userManager.getCharacter().Armor -= 1
     } else {
         userManager.healthCheck()
     }
-}
+};
 
 // function getNPC(delimter, npcType) {
 //     let NPC = npcManager.npcList().find(npcSearch => npcSearch.Type === npcType);
