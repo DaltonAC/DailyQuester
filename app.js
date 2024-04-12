@@ -84,6 +84,7 @@ $(function(){
             npcAttack()
         } else if (npcHealth > 0 && userDamage <= 0) {
             console.log("You missed!")
+            npcAttack()
         } else if (npcHealth <= 0) {
             console.log(`The ${currentNPC.Type} has been defeated!`)
         }
@@ -166,8 +167,12 @@ function npcAttack() {
     
     if (userHealth > 0) {
         let npcDamage = Math.floor(Math.random() * (userLevel + 1));
-        userManager.getCharacter().Health -= npcDamage
-        userManager.getCharacter().Armor -= 1
+        if (npcDamage <= 0){
+            console.log(`The ${currentNPC.Type} missed!`)
+        } else {
+            userManager.getCharacter().Health -= npcDamage
+            userManager.getCharacter().Armor -= 1
+        }
     } else {
         userManager.healthCheck()
     }
