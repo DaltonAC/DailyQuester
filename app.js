@@ -116,7 +116,7 @@ $(function(){
     $("#enhanceArmor").click(function(){
         userManager.enhanceArmor()
         })
-});
+
 
 function getInventoryString(delimiter) {
     // get inventory as a string
@@ -167,9 +167,11 @@ function npcAttack() {
     
     if (userHealth > 0) {
         let npcDamage = Math.floor(Math.random() * (userLevel + 1));
+        
         if (npcDamage <= 0){
             console.log(`The ${currentNPC.Type} missed!`)
         } else {
+            console.log(`The ${currentNPC.Type} deals ${npcDamage} to you!`)
             userManager.getCharacter().Health -= npcDamage
             userManager.getCharacter().Armor -= 1
         }
@@ -177,6 +179,8 @@ function npcAttack() {
         userManager.healthCheck()
     }
 };
+
+});
 
 // function getNPC(delimter, npcType) {
 //     let NPC = npcManager.npcList().find(npcSearch => npcSearch.Type === npcType);
