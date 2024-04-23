@@ -2,9 +2,9 @@ let questManager = (function(){
     
     let questList = []
 
-    createQuest = function(questName, questText, difficulty, type){
+    createQuest = function(questName, questText, difficulty, type, status = "Started"){
         // create a quest
-        let quest = [questName, questText, difficulty, type]
+        let quest = [questName, questText, difficulty, type, status]
         questList.push(quest)
         console.log("Created quest: " + quest.questName)
         return quest
@@ -17,6 +17,7 @@ let questManager = (function(){
     };
 
     CompleteQuest = function(quest) {
+        
         // mark quest as complete from questList
         // or remove quest from questList instead
         // update character experaince + stats?
@@ -36,8 +37,8 @@ let questManager = (function(){
             // see inventory management save
             questList = localStorage.getItem("questList") === null ? questList : JSON.parse(localStorage.getItem("questList"))
         }, 
-        createQuest:function(questName, questText, difficulty, type){
-            createQuest(questName, questText, difficulty, type)
+        createQuest:function(questName, questText, difficulty, type, status){
+            createQuest(questName, questText, difficulty, type, status)
             saveQuests()
         },
         getQuests:function(){

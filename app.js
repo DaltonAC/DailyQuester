@@ -52,7 +52,7 @@ $(function(){
             let questName = $('#questName').val();
             let questText = $('#questText').val();
             let difficulty = $('#difficulty').val();
-            let type = $('type').val();
+            let type = $('#type').val();
             questManager.createQuest(questName, questText, difficulty, type);
             return false;
         });
@@ -149,17 +149,23 @@ function getCharacterString(delimiter) {
 
 function getQuestsString(delimiter) {
     // get quest list as a string
-    let questList = questManager.getQuests()
-    let vPool="";
+    let questList = questManager.getQuests();
+    let vPool = "";
     if (questList.length > 0) {
-        jQuery.each(questList, function(i, val) {
-        vPool += val + delimiter;
-    });
+        questList.forEach(quest => {
+            vPool += "Quest Name: " + quest[0] + delimiter;
+            vPool += "Quest Text: " + quest[1] + delimiter;
+            vPool += "Difficulty: " + quest[2] + delimiter;
+            vPool += "Type: " + quest[3] + delimiter;
+            vPool += "Status: " + quest[4] + delimiter;
+            vPool += "<br />"
+        });
     } else {
         vPool += "Your quest log is empty!";
     }
     return vPool;
-};
+}
+
 
 function npcAttack() {
     let userLevel = userManager.getCharacter().Level
